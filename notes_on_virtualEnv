@@ -1,0 +1,25 @@
+python virtualenv is a way to create an isolated working place for your project where you need to install all the required packages from scratch. This will help to be able to easily identify the requirements specific to the project and not to include extra unneccessary packages. It will also help to make sure that the project will work in any other environment and is not dependent on certain setups on your device. 
+To create a virtual environment simply do this:
+
+	- virtualenv -p python3 <name_of_the_environment>
+	- source <name_of_the_environment>/bin/activate
+
+
+awesome, now you are inside the enviromnet. To make sure you can just type "which python" in your bash and you will see that the python package in the virtual environment is found. From now you can freely develop your project. Once everything is done and all the tests are passed, you can check which packages need to be installed on another machine for the project to be able to run by:
+
+	- pip freeze ---> lists all the packages installed in your environment 
+
+You can also export all this packages in a file which can be installed afterwards on anyother machine and include it alog with the project as below: 
+
+	- pip freeze requirements.txt ---> list all the requirements in this file
+
+on another machine simply run this command before running a project:
+
+	- pip install -r requirements.txt
+
+
+To exit from the virtual enviroment : 
+
+	- deactivate
+
+To use an already created enviroment again, just source the activation file again and enjoy developpment. ;)
