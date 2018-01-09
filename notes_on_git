@@ -1,0 +1,38 @@
+So it's either about creating a gitrepo for a project which you just want to start or about linking an existing project to a gitrepo.
+
+	1- To create a gitrepo from scratch:
+
+		* Create a directory for the project
+		* Initialize the git repo by the bash command: git init
+		* First commit can be from here which helps to create a clean repository and then develop on top (only suggested) 
+			git add .
+			git commit -m "initial commit"
+		*Based on the project probably you need a .gitignore and Readme (suggested to do it with markdown) 
+
+
+	2- To create a gitrepo from an existing project:
+
+
+		* Initialize the git repo by the bash command: git init
+		* add all the relevant files by: git add <files>
+		* Based on the project add a .gitignore and Readme
+		* Commit changes by: git commit -m "your message here"
+
+
+Now that we have the repo we need to connect it to Github :
+
+	*In your github account create a new repository (probably do not initialize with readme since you already have added that)
+	*Connet the Github repo with your repo using the commands below:
+		$ git remote add origin https://github.com/username/reponame 
+	this method needs github password all the time, if you have setup ssh connection and do not want to use your password use the 
+	below alternative:
+		$ git remote add origin git@github.com:username/reponame
+
+	Now push your changes to github and make the upstream connection: 
+		$ git push -u origin master
+
+	If you need to see or delete a remote use the commands below:
+
+		$ git remote -v ---> to see all the remotes
+		$ git remote rm <name_of_remote>
+
