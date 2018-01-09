@@ -1,0 +1,29 @@
+# docker-compose is a way of managing all other docker files that exist in a project and let them communicate to eachother. docker-compose usesa YAML file to make the multi-containers run together. Suppose that we have a Dockerfile to add this as one of the containers running in docker-compose (services) the procedure to follow in docker-compose.yml is as below:
+
+ version: '2.1'
+services:
+  s2t_tfserving: ----------> define the first service 
+    build:
+      context: .----------> root directory
+      dockerfile: model_serving/Docker-tf-serving -------> location of dockerfile 
+    image: eai-nlp-s2t-tfserving${TFSERVER_GPU_CPU_MODE}:latest -------> the name of the docker image 
+    ports:
+      - "9010:9000"
+    volumes:----------------------------> which directories to mount 
+      - /mnt/AIDATA:/mnt/AIDATA
+
+This is the simplest (with least features) way of defining a service. There are more features which coulde be added as per need. However when all the services are defined then it's time to run everything. YEAYYY!!
+
+To do so the main commands to learn in your bash: 
+
+	- docker-compose build ----> to build all the containers 
+	- docker-compose up -d ----> this command literally runs the containers. we use -d to be able to be detached from the container and run our commands in the bash afterwards. 
+
+	- docker-compose run <name_of_the_service> ----> in order to run a specific service
+
+	- docker-compose down ----> this will shutdown all the services 
+
+
+** not related to the docker-compose specifilly but sometimes it is useful to check whats going on in a specific container (this can be used in the context of Docker as well). 
+
+	- docker logs <name_of_the_container> ---> shows exactly what's running and what are (if any) the problems.
